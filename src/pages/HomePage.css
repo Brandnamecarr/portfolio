@@ -1,0 +1,108 @@
+.home-page {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3.5rem;
+  padding: 4rem 1.5rem;
+  text-align: center;
+  animation: home-fade-in 0.5s ease both;
+}
+
+@keyframes home-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.home-page__intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.home-page__hero {
+  width: 96px;
+  height: auto;
+  margin-bottom: 1.5rem;
+  filter: drop-shadow(0 8px 20px rgba(170, 59, 255, 0.25));
+}
+
+.home-page__eyebrow {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 0.5rem;
+}
+
+.home-page__summary {
+  color: var(--text);
+  max-width: 560px;
+  line-height: 1.6;
+  margin: 0.5rem 0 0;
+}
+
+.home-page__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 2.25rem;
+}
+
+.home-page__button {
+  padding: 0.65rem 1.3rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  color: var(--text-h);
+  text-decoration: none;
+  font-size: 0.9rem;
+  background: var(--bg);
+  box-shadow: var(--shadow);
+  transition: border-color 0.15s ease, background 0.15s ease, transform 0.15s ease;
+}
+
+.home-page__button:hover {
+  border-color: var(--accent-border);
+  background: var(--accent-bg);
+  transform: translateY(-1px);
+}
+
+.home-page__button--primary {
+  border-color: var(--accent-border);
+  background: var(--accent-bg);
+}
+
+.home-page__focus {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  width: 100%;
+  max-width: 900px;
+}
+
+.home-page__card {
+  padding: 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  text-align: left;
+}
+
+.home-page__card-title {
+  font-size: 1rem;
+  margin: 0 0 0.4rem;
+  color: var(--text-h);
+}
+
+.home-page__card-description {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
