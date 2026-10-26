@@ -104,3 +104,27 @@
   opacity: 0.6;
   cursor: not-allowed;
 }
+
+.google-connect__button {
+  padding: 0.35rem 0.75rem;
+  border-radius: 8px;
+  border: 1px solid #646cff;
+  background: transparent;
+  color: inherit;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.google-connect__button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.google-connect__account {
+  color: #888;
+  font-size: 0.8rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 60%;
+}

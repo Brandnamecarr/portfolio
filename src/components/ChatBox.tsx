@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { sendChatMessage } from "../api/client";
 import type { ChatMessage } from "../common/types";
+import GoogleConnect from "./GoogleConnect";
 import "./ChatBox.css";
 
 export default function ChatBox() {
@@ -39,6 +40,7 @@ export default function ChatBox() {
     <div className="chat-box">
       <div className="chat-box__header">
         <h2>Chief of Staff</h2>
+        <GoogleConnect onError={setError} />
       </div>
 
       <div className="chat-box__messages" ref={scrollRef}>

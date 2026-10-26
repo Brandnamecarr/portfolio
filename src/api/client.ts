@@ -1,3 +1,5 @@
+import type { GoogleStatus } from "../common/types";
+
 const API_BASE_URL = import.meta.env.VITE_API_URL ?? "http://localhost:8000";
 const SESSION_STORAGE_KEY = "portfolio_session_token";
 
@@ -29,19 +31,18 @@ export async function login(password: string): Promise<string> {
   return data.token;
 }
 
-export async function sendChatMessage(message: string): Promise<string> {
+async function authedRequest<T>(path: string, init: RequestInit = {}): Promise<T> {
   const token = getSessionToken();
   if (!token) {
     throw new Error("Not authenticated.");
   }
 
-  const res = await fetch(`${API_BASE_URL}/api/chat`, {
-    method: "POST",
+  const res = await fetch(`${API_BASE_URL}${path}`, {
+    ...init,
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     },
-    body: JSON.stringify({ message }),
   });
 
   const data = await res.json();
@@ -52,8 +53,26 @@ export async function sendChatMessage(message: string): Promise<string> {
   }
 
   if (!res.ok) {
-    throw new Error(data.detail ?? data.error ?? "Failed to send message.");
+    throw new Error(data.detail ?? data.error ?? "Request failed.");
   }
 
+  return data;
+}
+
+export async function sendChatMessage(message: string): Promise<string> {
+  const data = await authedRequest<{ reply: string }>("/api/chat", {
+    method: "POST",
+    body: JSON.stringify({ message }),
+  });
   return data.reply;
+}
+
+export function getGoogleStatus(): Promise<GoogleStatus> {
+  return authedRequest<GoogleStatus>("/api/google/status");
+}
+
+/** Returns the Google consent URL; Google then redirects to the API server. */
+export async function startGoogleLogin(): Promise<string> {
+  const data = await authedRequest<{ url: string }>("/api/google/login", { method: "POST" });
+  return data.url;
 }

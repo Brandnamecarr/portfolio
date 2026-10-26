@@ -1,0 +1,31 @@
+.assistant-page {
+  width: 100%;
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+.assistant-page__tabs {
+  display: flex;
+  gap: 0.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.assistant-page__tab {
+  padding: 0.45rem 0.9rem;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: #888;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.assistant-page__tab:hover {
+  color: inherit;
+}
+
+.assistant-page__tab--active {
+  border-color: #333;
+  background: #1a1a1a;
+  color: inherit;
+}
